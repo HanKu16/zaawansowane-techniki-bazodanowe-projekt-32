@@ -1,0 +1,13 @@
+OPTIONS (SKIP=1, ERRORS=1000000, DIRECT=TRUE)
+LOAD DATA
+INFILE 'pliki-csv/stanowisko.csv'
+DISCARDFILE 'stanowisko.dsc'
+APPEND
+INTO TABLE "stanowisko"
+FIELDS TERMINATED BY '|' OPTIONALLY ENCLOSED BY '"'
+TRAILING NULLCOLS
+(
+	"stanowisko_id" CHAR, 
+	"nazwa" CHAR, 
+	"opis" CHAR
+)

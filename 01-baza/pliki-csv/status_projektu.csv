@@ -1,0 +1,6 @@
+status_projektu_id|nazwa|opis
+1|Planowany|Projekt w fazie planowania
+2|W trakcie|Projekt aktualnie realizowany
+3|Wstrzymany|Projekt tymczasowo wstrzymany
+4|Zakończony|Projekt zakończony sukcesem
+5|Anulowany|Projekt anulowany przed zakończeniem

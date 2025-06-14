@@ -1,0 +1,13 @@
+OPTIONS (SKIP=1, ERRORS=1000000, DIRECT=TRUE)
+LOAD DATA
+INFILE 'pliki-csv/typ_pracy.csv'
+DISCARDFILE 'typ_pracy.dsc'
+APPEND
+INTO TABLE "typ_pracy"
+FIELDS TERMINATED BY '|' OPTIONALLY ENCLOSED BY '"'
+TRAILING NULLCOLS
+(
+	"typ_pracy_id" CHAR, 
+	"nazwa" CHAR, 
+	"opis" CHAR
+)

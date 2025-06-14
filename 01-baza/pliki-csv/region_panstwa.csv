@@ -1,0 +1,115 @@
+region_panstwa_id|panstwo_id|nazwa
+1|POL|Nevada
+2|POL|Utah
+3|POL|Louisiana
+4|POL|New York
+5|POL|Massachusetts
+6|POL|North Carolina
+7|POL|Indiana
+8|POL|Arkansas
+9|POL|Montana
+10|POL|Florida
+11|POL|Alabama
+12|POL|Minnesota
+13|POL|Michigan
+14|POL|Georgia
+15|POL|Pennsylvania
+16|DEU|Indiana
+17|DEU|California
+18|DEU|Delaware
+19|DEU|Oregon
+20|DEU|Kentucky
+21|DEU|Alabama
+22|DEU|Minnesota
+23|DEU|Idaho
+24|DEU|Missouri
+25|DEU|Missouri
+26|DEU|Colorado
+27|DEU|Utah
+28|DEU|Oklahoma
+29|DEU|Vermont
+30|DEU|California
+31|FRA|Connecticut
+32|FRA|Vermont
+33|FRA|Oklahoma
+34|FRA|Nevada
+35|FRA|South Dakota
+36|ESP|South Carolina
+37|ESP|Maryland
+38|ESP|Arizona
+39|ESP|New Jersey
+40|ESP|Montana
+41|ESP|South Dakota
+42|ESP|Alaska
+43|ESP|Oregon
+44|ESP|Delaware
+45|ESP|Nevada
+46|ESP|Pennsylvania
+47|ESP|Missouri
+48|ESP|Arkansas
+49|ESP|West Virginia
+50|ITA|New Mexico
+51|ITA|Tennessee
+52|ITA|West Virginia
+53|ITA|Virginia
+54|ITA|Wisconsin
+55|ITA|Rhode Island
+56|ITA|Delaware
+57|ITA|Iowa
+58|GBR|Kansas
+59|GBR|Wyoming
+60|GBR|Massachusetts
+61|GBR|Tennessee
+62|GBR|North Carolina
+63|GBR|Texas
+64|GBR|Maryland
+65|GBR|Arkansas
+66|GBR|California
+67|GBR|New Hampshire
+68|GBR|Minnesota
+69|GBR|Wisconsin
+70|USA|Pennsylvania
+71|USA|Montana
+72|USA|Florida
+73|USA|West Virginia
+74|USA|Tennessee
+75|USA|Missouri
+76|CAN|Vermont
+77|CAN|Oregon
+78|CAN|Alabama
+79|CAN|Georgia
+80|CAN|West Virginia
+81|CAN|Hawaii
+82|CAN|Indiana
+83|CAN|New Mexico
+84|CAN|Missouri
+85|CAN|Kansas
+86|CAN|Delaware
+87|CAN|Arkansas
+88|CAN|New Mexico
+89|CAN|Nevada
+90|CAN|Ohio
+91|AUS|West Virginia
+92|AUS|Alabama
+93|AUS|Texas
+94|AUS|Rhode Island
+95|AUS|Washington
+96|AUS|Virginia
+97|AUS|North Dakota
+98|AUS|Maine
+99|AUS|South Carolina
+100|AUS|Florida
+101|JPN|Colorado
+102|JPN|Maine
+103|JPN|Mississippi
+104|JPN|Georgia
+105|JPN|Kentucky
+106|JPN|West Virginia
+107|JPN|Montana
+108|JPN|Delaware
+109|JPN|Vermont
+110|JPN|Indiana
+111|JPN|South Dakota
+112|JPN|Kansas
+113|JPN|Colorado
+114|JPN|Tennessee

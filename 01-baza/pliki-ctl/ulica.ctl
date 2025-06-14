@@ -1,0 +1,13 @@
+OPTIONS (SKIP=1, ERRORS=1000000, DIRECT=TRUE)
+LOAD DATA
+INFILE 'pliki-csv/ulica.csv'
+DISCARDFILE 'ulica.dsc'
+APPEND
+INTO TABLE "ulica"
+FIELDS TERMINATED BY '|' OPTIONALLY ENCLOSED BY '"'
+TRAILING NULLCOLS
+(
+	"ulica_id" CHAR, 
+	"miasto_id" CHAR, 
+	"nazwa" CHAR
+)

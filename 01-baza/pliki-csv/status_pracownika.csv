@@ -1,0 +1,6 @@
+status_pracownika_id|nazwa|opis
+1|Aktywny|Pracownik obecnie zatrudniony i aktywny
+2|Urlop|Pracownik obecnie na urlopie
+3|Zwolniony|Pracownik już nie pracuje w firmie
+4|Chorobowe|Pracownik na zwolnieniu lekarskim
+5|Delegacja|Pracownik obecnie w delegacji

@@ -1,0 +1,4 @@
+zmiana_id|nazwa|godzina_rozpoczecia|godzina_zakonczenia
+1|Poranna|08:00:00|16:00:00
+2|Popołudniowa|16:00:00|00:00:00
+3|Nocna|00:00:00|08:00:00

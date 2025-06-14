@@ -1,0 +1,228 @@
+// https://dbdiagram.io/
+
+Table panstwo {
+  panstwo_id CHAR(3) [pk]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table region_panstwa {
+  region_panstwa_id NUMBER(4) [pk]
+  panstwo_id CHAR(3) [ref: > panstwo.panstwo_id, not null]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table miasto {
+  miasto_id NUMBER(5) [pk]
+  region_panstwa_id NUMBER(4) [ref: > region_panstwa.region_panstwa_id, not null]
+  nazwa VARCHAR2(60) [not null]
+}
+
+Table ulica {
+  ulica_id NUMBER(9) [pk]
+  miasto_id NUMBER(5) [ref: > miasto.miasto_id, not null]
+  nazwa VARCHAR2(100) [not null]
+}
+
+Table oddzial {
+  oddzial_id NUMBER(5) [pk]
+  ulica_id NUMBER(9) [ref: > ulica.ulica_id, not null]
+  nazwa VARCHAR2(100) [not null]
+}
+
+Table stanowisko {
+  stanowisko_id NUMBER(3) [pk]
+  nazwa VARCHAR2(30) [not null]
+  opis VARCHAR2(1000) [not null]
+}
+
+Table rodzaj_zatrudnienia {
+  rodzaj_zatrudnienia_id NUMBER(2)  [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(400) [not null]
+}
+
+Table status_pracownika {
+  status_pracownika_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(400) [not null]
+}
+
+Table pracownik {
+  pracownik_id NUMBER(9) [pk]
+  stanowisko_id NUMBER(3) [ref: > stanowisko.stanowisko_id, not null]
+  rodzaj_zatrudnienia_id NUMBER(2) [ref: > rodzaj_zatrudnienia.rodzaj_zatrudnienia_id, not null]
+  status_pracownika_id NUMBER(2) [ref: > status_pracownika.status_pracownika_id, not null]
+  imie VARCHAR2(30) [not null]
+  nazwisko VARCHAR2(55) [not null]
+  mail VARCHAR2(100) [not null]
+}
+
+Table typ_pracy {
+  typ_pracy_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(500)
+}
+
+Table zmiana {
+  zmiana_id NUMBER(2) [pk]
+  nazwa VARCHAR2(30) [not null]
+  godzina_rozpoczecia TIMESTAMP [not null]
+  godzina_zakonczenia TIMESTAMP [not null]
+}
+
+Table status_projektu {
+  status_projektu_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(400) [not null]
+}
+
+Table rodzaj_projektu {
+  rodzaj_projektu_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(400) [not null]
+}
+
+Table projekt {
+  projekt_id NUMBER(5) [pk]
+  status_projektu_id NUMBER(2) [ref: > status_projektu.status_projektu_id, not null]
+  rodzaj_projektu_id NUMBER(2) [ref: > rodzaj_projektu.rodzaj_projektu_id, not null]
+  nazwa VARCHAR2(100) [not null]
+  opis VARCHAR2(2000) [not null]
+}
+
+Table pracownicy_w_projekcie {
+  pracownik_w_projekcie_id NUMBER(10) [pk]
+  pracownik_id NUMBER(9) [ref: > pracownik.pracownik_id, not null]
+  projekt_id NUMBER(5) [ref: > projekt.projekt_id, not null]
+}
+
+Table czas_pracy {
+  czas_pracy_id NUMBER(20) [pk]
+  pracownik_w_projekcie_id NUMBER(10) [ref: > pracownicy_w_projekcie.pracownik_w_projekcie_id, not null]
+  oddzial_id NUMBER(5) [ref: > oddzial.oddzial_id, not null]
+  typ_pracy_id NUMBER(2) [ref: > typ_pracy.typ_pracy_id, not null]
+  zmiana_id NUMBER(2) [ref: > zmiana.zmiana_id, not null]
+  czas_przepracowany NUMBER(4, 2) [not null]
+  czas_trwania_przerwy NUMBER(4, 2) [not null]
+  godzina_przyjscia_do_pracy TIMESTAMP [not null]
+  godzina_wyjscia_z_pracy TIMESTAMP [not null]
+  godziny_rozpoczecia_przerwy TIMESTAMP
+  godziny_zakonczenia_przerwy TIMESTAMP
+  dzien_miesiaca NUMBER(2) [not null]
+  miesiac NUMBER(2) [not null]
+  rok NUMBER(4) [not null]
+}
+// https://dbdiagram.io/
+
+Table panstwo {
+  panstwo_id CHAR(3) [pk]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table region_panstwa {
+  region_panstwa_id NUMBER(4) [pk]
+  panstwo_id CHAR(3) [ref: > panstwo.panstwo_id, not null]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table miasto {
+  miasto_id NUMBER(5) [pk]
+  region_panstwa_id NUMBER(4) [ref: > region_panstwa.region_panstwa_id, not null]
+  nazwa VARCHAR2(60) [not null]
+}
+
+Table ulica {
+  ulica_id NUMBER(9) [pk]
+  miasto_id NUMBER(5) [ref: > miasto.miasto_id, not null]
+  nazwa VARCHAR2(100) [not null]
+}
+
+Table oddzial {
+  oddzial_id NUMBER(5) [pk]
+  ulica_id NUMBER(9) [ref: > ulica.ulica_id, not null]
+  nazwa VARCHAR2(100) [not null]
+}
+
+Table stanowisko {
+  stanowisko_id NUMBER(3) [pk]
+  nazwa VARCHAR2(30) [not null]
+  opis VARCHAR2(1000) [not null]
+}
+
+Table rodzaj_zatrudnienia {
+  rodzaj_zatrudnienia_id NUMBER(2)  [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(400) [not null]
+}
+
+Table status_pracownika {
+  status_pracownika_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(400) [not null]
+}
+
+Table pracownik {
+  pracownik_id NUMBER(9) [pk]
+  stanowisko_id NUMBER(3) [ref: > stanowisko.stanowisko_id, not null]
+  rodzaj_zatrudnienia_id NUMBER(2) [ref: > rodzaj_zatrudnienia.rodzaj_zatrudnienia_id, not null]
+  status_pracownika_id NUMBER(2) [ref: > status_pracownika.status_pracownika_id, not null]
+  imie VARCHAR2(30) [not null]
+  nazwisko VARCHAR2(55) [not null]
+  mail VARCHAR2(100) [not null]
+}
+
+Table typ_pracy {
+  typ_pracy_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(500)
+}
+
+Table zmiana {
+  zmiana_id NUMBER(2) [pk]
+  nazwa VARCHAR2(30) [not null]
+  godzina_rozpoczecia TIMESTAMP [not null]
+  godzina_zakonczenia TIMESTAMP [not null]
+}
+
+Table status_projektu {
+  status_projektu_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(400) [not null]
+}
+
+Table rodzaj_projektu {
+  rodzaj_projektu_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+  opis VARCHAR2(400) [not null]
+}
+
+Table projekt {
+  projekt_id NUMBER(5) [pk]
+  status_projektu_id NUMBER(2) [ref: > status_projektu.status_projektu_id, not null]
+  rodzaj_projektu_id NUMBER(2) [ref: > rodzaj_projektu.rodzaj_projektu_id, not null]
+  nazwa VARCHAR2(100) [not null]
+  opis VARCHAR2(2000) [not null]
+}
+
+Table pracownicy_w_projekcie {
+  pracownik_w_projekcie_id NUMBER(10) [pk]
+  pracownik_id NUMBER(9) [ref: > pracownik.pracownik_id, not null]
+  projekt_id NUMBER(5) [ref: > projekt.projekt_id, not null]
+}
+
+Table czas_pracy {
+  czas_pracy_id NUMBER(20) [pk]
+  pracownik_w_projekcie_id NUMBER(10) [ref: > pracownicy_w_projekcie.pracownik_w_projekcie_id, not null]
+  oddzial_id NUMBER(5) [ref: > oddzial.oddzial_id, not null]
+  typ_pracy_id NUMBER(2) [ref: > typ_pracy.typ_pracy_id, not null]
+  zmiana_id NUMBER(2) [ref: > zmiana.zmiana_id, not null]
+  czas_przepracowany NUMBER(4, 2) [not null]
+  czas_trwania_przerwy NUMBER(4, 2) [not null]
+  godzina_przyjscia_do_pracy TIMESTAMP [not null]
+  godzina_wyjscia_z_pracy TIMESTAMP [not null]
+  godziny_rozpoczecia_przerwy TIMESTAMP
+  godziny_zakonczenia_przerwy TIMESTAMP
+  dzien_miesiaca NUMBER(2) [not null]
+  miesiac NUMBER(2) [not null]
+  rok NUMBER(4) [not null]
+}

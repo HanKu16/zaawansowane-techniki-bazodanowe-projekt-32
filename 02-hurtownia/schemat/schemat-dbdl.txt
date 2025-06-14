@@ -1,0 +1,113 @@
+// https://dbdiagram.io/
+
+Table panstwo_h {
+  panstwo_id CHAR(3) [pk]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table region_panstwa_h {
+  region_panstwa_id NUMBER(4) [pk]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table miasto_h {
+  miasto_id NUMBER(5) [pk]
+  nazwa VARCHAR2(60) [not null]
+}
+
+Table ulica_h {
+  ulica_id NUMBER(9) [pk]
+  nazwa VARCHAR2(100) [not null]
+}
+
+Table oddzial_h {
+  oddzial_id NUMBER(5) [pk]
+  nazwa VARCHAR2(100) [not null]
+}
+
+Table stanowisko_h {
+  stanowisko_id NUMBER(3) [pk]
+  nazwa VARCHAR2(30) [not null]
+}
+
+Table rodzaj_zatrudnienia_h {
+  rodzaj_zatrudnienia_id NUMBER(2)  [pk]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table status_pracownika_h {
+  status_pracownika_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table pracownik_h {
+  pracownik_id NUMBER(9) [pk]
+  nazwisko VARCHAR2(55) [not null]
+}
+
+Table typ_pracy_h {
+  typ_pracy_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table zmiana_h {
+  zmiana_id NUMBER(2) [pk]
+  nazwa VARCHAR2(30) [not null]
+}
+
+Table status_projektu_h {
+  status_projektu_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table rodzaj_projektu_h {
+  rodzaj_projektu_id NUMBER(2) [pk]
+  nazwa VARCHAR2(50) [not null]
+}
+
+Table projekt_h {
+  projekt_id NUMBER(5) [pk]
+  nazwa VARCHAR2(100) [not null]
+}
+
+Table dzien_miesiaca_h {
+  dzien_miesiaca_id NUMBER(2) [pk]
+  opis VARCHAR2(100) [not null]
+}
+
+Table miesiac_h {
+  miesiac_id NUMBER(2) [pk]
+  opis VARCHAR2(100) [not null]
+}
+
+Table rok_h {
+  rok_id NUMBER(4) [pk]
+  opis VARCHAR2(100) [not null]
+}
+
+Table czas_pracy_h {
+  czas_pracy_id NUMBER(20) [pk]
+  pracownik_id NUMBER(9) [ref: > pracownik_h.pracownik_id, not null]
+  stanowisko_id NUMBER(3) [ref: > stanowisko_h.stanowisko_id, not null]
+  rodzaj_zatrudnienia_id NUMBER(2) [ref: > rodzaj_zatrudnienia_h.rodzaj_zatrudnienia_id, not null]
+  status_pracownika_id NUMBER(2) [ref: > status_pracownika_h.status_pracownika_id, not null]
+  projekt_id NUMBER(5) [ref: > projekt_h.projekt_id, not null]
+  status_projektu_id NUMBER(2) [ref: > status_projektu_h.status_projektu_id, not null]
+  rodzaj_projektu_id NUMBER(2) [ref: > rodzaj_projektu_h.rodzaj_projektu_id, not null]
+  oddzial_id NUMBER(5) [ref: > oddzial_h.oddzial_id, not null]
+  ulica_id NUMBER(9) [ref: > ulica_h.ulica_id, not null]
+  miasto_id NUMBER(5) [ref: > miasto_h.miasto_id, not null]
+  region_panstwa_id NUMBER(4) [ref: > region_panstwa_h.region_panstwa_id, not null]
+  panstwo_id CHAR(3) [ref: > panstwo_h.panstwo_id, not null]
+  typ_pracy_id NUMBER(2) [ref: > typ_pracy_h.typ_pracy_id, not null]
+  zmiana_id NUMBER(2) [ref: > zmiana_h.zmiana_id, not null]
+  dzien_miesiaca_id NUMBER(2) [ref: > dzien_miesiaca_h.dzien_miesiaca_id, not null]
+  miesiac_id NUMBER(2) [ref: > miesiac_h.miesiac_id, not null]
+  rok_id NUMBER(2) [ref: > rok_h.rok_id, not null]
+  czas_przepracowany NUMBER(4, 2) [not null]
+  czas_trwania_przerwy NUMBER(4, 2) [not null]
+  godzina_przyjscia_do_pracy TIMESTAMP [not null]
+  godzina_wyjscia_z_pracy TIMESTAMP [not null]
+  godziny_rozpoczecia_przerwy TIMESTAMP
+  godziny_zakonczenia_przerwy TIMESTAMP
+}

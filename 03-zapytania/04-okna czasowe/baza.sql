@@ -1,3 +1,4 @@
+--Porównanie miesięcznego czasu pracy ze średnią 3-miesięczną ze względu na stanowisko, oddział i rodzaj projektu.
 SELECT
     NVL((SELECT s."nazwa" FROM "stanowisko" s WHERE s."stanowisko_id" = z."stanowisko_id"), 'Nieokreślone') AS stanowisko,
     NVL((SELECT rp."nazwa" FROM "rodzaj_projektu" rp WHERE rp."rodzaj_projektu_id" = z."rodzaj_projektu_id"), 'Nieokreślone') AS rodzaj_projektu,
@@ -30,7 +31,7 @@ FROM (
 ORDER BY stanowisko, oddzial, rodzaj_projektu, z."rok", z."miesiac";
 
 
-
+--Analiza średniej kroczącej czasu pracy dla rodzaju projektu, statusu projektu i kraju (3 miesiące).
 SELECT 
     NVL((SELECT rp."nazwa" FROM "rodzaj_projektu" rp WHERE rp."rodzaj_projektu_id" = g."rodzaj_projektu_id"), 'Wszystkie rodzaje') AS rodzaj_projektu,
     NVL((SELECT sp."nazwa" FROM "status_projektu" sp WHERE sp."status_projektu_id" = g."status_projektu_id"), 'Wszystkie statusy') AS status_projektu,
@@ -65,7 +66,7 @@ FROM (
 ORDER BY g."rodzaj_projektu_id", g."status_projektu_id", g."panstwo_id", g."rok", g."miesiac";
 
 
-
+--Raport średniej krocząca czasu przerwy dla typu zatrudnienia, regionu i miesiaca (3 miesiące).
 SELECT 
     NVL((SELECT rz."nazwa" FROM "rodzaj_zatrudnienia" rz WHERE rz."rodzaj_zatrudnienia_id" = g."rodzaj_zatrudnienia_id"), 'Wszystkie typy') AS rodzaj_zatrudnienia,
     NVL((SELECT rp."nazwa" FROM "region_panstwa" rp WHERE rp."region_panstwa_id" = g."region_panstwa_id"), 'Wszystkie regiony') AS region,

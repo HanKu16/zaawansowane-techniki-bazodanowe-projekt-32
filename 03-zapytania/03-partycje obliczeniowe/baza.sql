@@ -1,3 +1,4 @@
+--Porównanie sumarycznego czasu pracy według stanowiska, rodzaju projektu i statusu pracownika do średniego dla danego stanowiska.
 SELECT
     NVL((SELECT s."nazwa" FROM "stanowisko" s WHERE s."stanowisko_id" = z."stanowisko_id"), 'Nieokreślone') AS "stanowisko",
     NVL((SELECT rp."nazwa" FROM "rodzaj_projektu" rp WHERE rp."rodzaj_projektu_id" = z."rodzaj_projektu_id"), 'Nieokreślone') AS "rodzaj_projektu",
@@ -24,7 +25,7 @@ FROM (
 ORDER BY "stanowisko", "rodzaj_projektu", "roznica_do_sredniej" DESC;
 
 
-
+--Porównanie czasu pracy według regionu, rodzaju projektu i statusu pracownika.
 SELECT 
     (SELECT rp."nazwa" FROM "region_panstwa" rp WHERE rp."region_panstwa_id" = m."region_panstwa_id") AS "region",
     (SELECT rpj."nazwa" FROM "rodzaj_projektu" rpj WHERE rpj."rodzaj_projektu_id" = p."rodzaj_projektu_id") AS "rodzaj_projektu",
@@ -48,7 +49,7 @@ GROUP BY m."region_panstwa_id", p."rodzaj_projektu_id", pr."status_pracownika_id
 ORDER BY "region", "rodzaj_projektu", "status_pracownika";
 
 
-
+--Porównanie łącznego czasu pracy ze średnią według kraju, typu projektu i rodzaju zatrudnienia.
 SELECT 
     NVL((SELECT p."nazwa" FROM "panstwo" p WHERE p."panstwo_id" = g."panstwo_id"), 'Wszystkie kraje') AS kraj,
     NVL((SELECT rp."nazwa" FROM "rodzaj_projektu" rp WHERE rp."rodzaj_projektu_id" = g."rodzaj_projektu_id"), 'Wszystkie rodzaje') AS rodzaj_projektu,

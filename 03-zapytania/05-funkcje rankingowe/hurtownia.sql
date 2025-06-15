@@ -1,3 +1,4 @@
+--Ranking przepracowanych godzin według statusu pracownika, projektu i miasta.
 SELECT
     NVL((SELECT s."nazwa" FROM "status_pracownika_h" s WHERE s."status_pracownika_id" = g."status_pracownika_id"), 'Wszystkie') AS "status",
     NVL((SELECT p."nazwa" FROM "projekt_h" p WHERE p."projekt_id" = g."projekt_id"), 'Wszystkie') AS "projekt",
@@ -16,7 +17,7 @@ FROM (
 ORDER BY "status", "projekt", "ranking_w_grupie";
 
 
-
+--Ranking pracowników według przepracowanych godzin ze względu na rodzaj zatrudnienia, region państwa i typ pracy. 
 SELECT 
     NVL((SELECT rz."nazwa" FROM "rodzaj_zatrudnienia_h" rz WHERE rz."rodzaj_zatrudnienia_id" = g."rodzaj_zatrudnienia_id"), 'Wszystkie typy') AS rodzaj_zatrudnienia,
     NVL((SELECT rp."nazwa" FROM "region_panstwa_h" rp WHERE rp."region_panstwa_id" = g."region_panstwa_id"), 'Wszystkie regiony') AS region,
@@ -38,7 +39,7 @@ FROM (
 ORDER BY g."rodzaj_zatrudnienia_id", g."region_panstwa_id", "ranking";
 
 
-
+--Ranking efektywności pracowników (stosunek czasu pracy do przerw) w podziale na kraj, rodzaj zatrudnienia i typ pracy.
 SELECT 
     NVL((SELECT p."nazwa" FROM "panstwo_h" p WHERE p."panstwo_id" = g."panstwo_id"), 'Wszystkie kraje') AS kraj,
     NVL((SELECT rz."nazwa" FROM "rodzaj_zatrudnienia_h" rz WHERE rz."rodzaj_zatrudnienia_id" = g."rodzaj_zatrudnienia_id"), 'Wszystkie typy') AS rodzaj_zatrudnienia,

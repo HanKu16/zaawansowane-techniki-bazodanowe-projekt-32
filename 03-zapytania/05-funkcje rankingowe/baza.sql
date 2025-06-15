@@ -1,3 +1,4 @@
+--Ranking przepracowanych godzin według statusu pracownika, projektu i miasta.
 SELECT
     NVL((SELECT s."nazwa" FROM "status_pracownika" s WHERE s."status_pracownika_id" = g."status_pracownika_id"), 'Wszystkie') AS "status",
     NVL((SELECT p."nazwa" FROM "projekt" p WHERE p."projekt_id" = g."projekt_id"), 'Wszystkie') AS "projekt",
@@ -23,13 +24,12 @@ FROM (
 ORDER BY "status", "projekt", "ranking_w_grupie";
 
 
-
-
+--Ranking pracowników według przepracowanych godzin ze względu na rodzaj zatrudnienia, region państwa i typ pracy. 
 SELECT 
     NVL((SELECT rz."nazwa" FROM "rodzaj_zatrudnienia" rz WHERE rz."rodzaj_zatrudnienia_id" = g."rodzaj_zatrudnienia_id"), 'Wszystkie typy') AS rodzaj_zatrudnienia,
     NVL((SELECT rp."nazwa" FROM "region_panstwa" rp WHERE rp."region_panstwa_id" = g."region_panstwa_id"), 'Wszystkie regiony') AS region,
     NVL((SELECT tp."nazwa" FROM "typ_pracy" tp WHERE tp."typ_pracy_id" = g."typ_pracy_id"), 'Wszystkie typy') AS typ_pracy,
-    (SELECT p."imie" || ' ' || p."nazwisko" FROM "pracownik" p WHERE p."pracownik_id" = g."pracownik_id") AS pracownik,
+    (SELECT p."nazwisko" FROM "pracownik" p WHERE p."pracownik_id" = g."pracownik_id") AS pracownik,
     g."suma_godzin",
     RANK() OVER (PARTITION BY g."rodzaj_zatrudnienia_id", g."region_panstwa_id" ORDER BY g."suma_godzin" DESC) AS "ranking"
 FROM (
@@ -52,12 +52,12 @@ FROM (
 ORDER BY g."rodzaj_zatrudnienia_id", g."region_panstwa_id", "ranking";
 
 
-
+--Ranking efektywności pracowników (stosunek czasu pracy do przerw) w podziale na kraj, rodzaj zatrudnienia i typ pracy.
 SELECT 
     NVL((SELECT p."nazwa" FROM "panstwo" p WHERE p."panstwo_id" = g."panstwo_id"), 'Wszystkie kraje') AS kraj,
     NVL((SELECT rz."nazwa" FROM "rodzaj_zatrudnienia" rz WHERE rz."rodzaj_zatrudnienia_id" = g."rodzaj_zatrudnienia_id"), 'Wszystkie typy') AS rodzaj_zatrudnienia,
     NVL((SELECT tp."nazwa" FROM "typ_pracy" tp WHERE tp."typ_pracy_id" = g."typ_pracy_id"), 'Wszystkie typy') AS typ_pracy,
-    (SELECT p."imie" || ' ' || p."nazwisko" FROM "pracownik" p WHERE p."pracownik_id" = g."pracownik_id") AS pracownik,
+    (SELECT p."nazwisko" FROM "pracownik" p WHERE p."pracownik_id" = g."pracownik_id") AS pracownik,
     g."czas_przepracowany",
     g."czas_przerw",
     ROUND(g."czas_przepracowany" / NULLIF(g."czas_przerw", 0), 2) AS wspolczynnik_efektywnosci,
